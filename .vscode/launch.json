@@ -13,7 +13,6 @@
                 "<node_internals>/**"
             ],
             "console": "integratedTerminal",
-            // "program": "${workspaceFolder}/test/specs/reviews_television.spec.js",
             "runtimeArgs": [
                 "run-script",
                 "test",
