@@ -1,8 +1,5 @@
 # Which? UI Automation
-
-# Kiwii_e2e_tests
 This repo has been set up to add e2e tests for which?.
-
 
 # What is webdriverIO?
 WebdriverIO is a progressive automation framework built to automate modern web and mobile applications. It simplifies the interaction with your app and provides a set of plugins that help you create a scalable, robust and flakiness test suite.
