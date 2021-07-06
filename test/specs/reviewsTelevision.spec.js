@@ -1,5 +1,6 @@
 const review = require("../../pageObject/reviewsTelevisionPage.js");
 const testData = require("../../testData.json")
+const general = require("../../helpers/general-actions.js")
 
 describe('which? television review', async () => {
   beforeEach(async () => {
@@ -8,23 +9,14 @@ describe('which? television review', async () => {
   });
 
   it('Should see correct search results', async () => {
-    const searchResults = await $$(review.elements.searchResults);
-    await expect(searchResults).toBeElementsArrayOfSize(testData.searchResultCount);
+    await general.assertPageResultCount(
+      review.elements.searchResults,
+      testData.searchResultCount)
   })
 
   it('Best Buy filter should show user incentives to join', async () => {
-    const bestBuyFilterAccordion = await $(review.elements.bestBuyFilterAccordionDesktop);
-    await bestBuyFilterAccordion.scrollIntoView();
-    await bestBuyFilterAccordion.click();
-
-    const tryWhichBtn = await $(review.elements.signUpModal.tryWhichBtn);
-    await expect(tryWhichBtn).toBePresent();
-
-    const memberRecommendation = await $(review.elements.signUpModal.memberRecommendation);
-    await expect(memberRecommendation).toHaveText(review.elements.signUpModal.memberRecommendationTxt);
-
-    const signUpModal = await $(review.elements.signUpModal.locator);
-    await expect(signUpModal).toBePresent();
+    await review.clickFilterAccordion(review.elements.bestBuyFilterDesktop)
+    await review.assertFilterSignUpModal()
   })
 
   it('Should have 4 category headings', async () => {
@@ -32,6 +24,7 @@ describe('which? television review', async () => {
     await expect(categoryHeader).toHaveChildren(testData.categoryHeaderCount);
   })
 
+  // ADDITIONAL TESTS
   // it('Should show correct page when clicking on a result', async () => {
   // })
 
